@@ -1,114 +1,50 @@
 Purpose: Create 2 tidy data sets from the UCI HAR Dataset.
 Tidy Data Set 1:
 
-The first tidy data set is: MeanStd.txt
-This data set is 10299 rows and 89 columns. The values in each column are various measures per subject and activity. The values are obtained by combining all of the column s of data in train and test data (subject, y, and X) , and then combining the rows on train and test data to create 1 single data frame. A column for activityLabels was then added by matching ID’s to labels from activity_labels.txt.
+The first tidy data set is: meanstdData
+This data set is 180 rows and 81 columns. The values in each column are various measures per subject and activity. 
+The values are obtained by combining all of the column s of data in train and test data (subject, y, and X) , 
+and then combining the rows on train and test data to create 1 single data frame. A column for activityLabels was 
+then added by matching IDâ€™s to labels from activity_labels.txt.
 
-This dataset was then subsetted down to 89 columns by selecting only those those columns containing either the words: "mean" or "std", representing the mean and standard deviation of each measurement. These columns were then renamed to enhance readability using the following rules:
-1) Syntactically valid R names were created using the make.names() function.
-2) Column names beginning with 't' were updated to 'time'.
-3) Column names beginning with 'f' were updated to 'frequency'.
-4) Column names containing 'std' were replaced with 'StdDev'.
-5) Column names containing 'mean' were replaced with 'Mean'.
-6) All periods were removed.
+The following lists all of the columns in meanstdData
 
-The following lists all of the columns in MeanStd.txt.
-
-    subjectID - the subject ID (integer)
-    activityID - the activity ID (integer)
-    activityLabel - the activity label (character)
-    timeBodyAccMeanX - measure (numeric)
-    timeBodyAccMeanY - measure (numeric)
-    timeBodyAccMeanZ - measure (numeric)
-    timeGravityAccMeanX - measure (numeric)
-    timeGravityAccMeanY - measure (numeric)
-    timeGravityAccMeanZ - measure (numeric)
-    timeBodyAccJerkMeanX - measure (numeric)
-    timeBodyAccJerkMeanY - measure (numeric)
-    timeBodyAccJerkMeanZ - measure (numeric)
-    timeBodyGyroMeanX - measure (numeric)
-    timeBodyGyroMeanY - measure (numeric)
-    timeBodyGyroMeanZ - measure (numeric)
-    timeBodyGyroJerkMeanX - measure (numeric)
-    timeBodyGyroJerkMeanY - measure (numeric)
-    timeBodyGyroJerkMeanZ - measure (numeric)
-    timeBodyAccMagMean - measure (numeric)
-    timeGravityAccMagMean - measure (numeric)
-    timeBodyAccJerkMagMean - measure (numeric)
-    timeBodyGyroMagMean - measure (numeric)
-    timeBodyGyroJerkMagMean - measure (numeric)
-    frequencyBodyAccMeanX - measure (numeric)
-    frequencyBodyAccMeanY - measure (numeric)
-    frequencyBodyAccMeanZ - measure (numeric)
-    frequencyBodyAccMeanFreqX - measure (numeric)
-    frequencyBodyAccMeanFreqY - measure (numeric)
-    frequencyBodyAccMeanFreqZ - measure (numeric)
-    frequencyBodyAccJerkMeanX - measure (numeric)
-    frequencyBodyAccJerkMeanY - measure (numeric)
-    frequencyBodyAccJerkMeanZ - measure (numeric)
-    frequencyBodyAccJerkMeanFreqX - measure (numeric)
-    frequencyBodyAccJerkMeanFreqY - measure (numeric)
-    frequencyBodyAccJerkMeanFreqZ - measure (numeric)
-    frequencyBodyGyroMeanX - measure (numeric)
-    frequencyBodyGyroMeanY - measure (numeric)
-    frequencyBodyGyroMeanZ - measure (numeric)
-    frequencyBodyGyroMeanFreqX - measure (numeric)
-    frequencyBodyGyroMeanFreqY - measure (numeric)
-    frequencyBodyGyroMeanFreqZ - measure (numeric)
-    frequencyBodyAccMagMean - measure (numeric)
-    frequencyBodyAccMagMeanFreq - measure (numeric)
-    frequencyBodyBodyAccJerkMagMean - measure (numeric)
-    frequencyBodyBodyAccJerkMagMeanFreq - measure (numeric)
-    frequencyBodyBodyGyroMagMean - measure (numeric)
-    frequencyBodyBodyGyroMagMeanFreq - measure (numeric)
-    frequencyBodyBodyGyroJerkMagMean - measure (numeric)
-    frequencyBodyBodyGyroJerkMagMeanFreq - measure (numeric)
-    angletBodyAccMeangravity - measure (numeric)
-    angletBodyAccJerkMeangravityMean - measure (numeric)
-    angletBodyGyroMeangravityMean - measure (numeric)
-    angletBodyGyroJerkMeangravityMean - measure (numeric)
-    angleXgravityMean - measure (numeric)
-    angleYgravityMean - measure (numeric)
-    angleZgravityMean - measure (numeric)
-    timeBodyAccStdDevX - measure (numeric)
-    timeBodyAccStdDevY - measure (numeric)
-    timeBodyAccStdDevZ - measure (numeric)
-    timeGravityAccStdDevX - measure (numeric)
-    timeGravityAccStdDevY - measure (numeric)
-    timeGravityAccStdDevZ - measure (numeric)
-    timeBodyAccJerkStdDevX - measure (numeric)
-    timeBodyAccJerkStdDevY - measure (numeric)
-    timeBodyAccJerkStdDevZ - measure (numeric)
-    timeBodyGyroStdDevX - measure (numeric)
-    timeBodyGyroStdDevY - measure (numeric)
-    timeBodyGyroStdDevZ - measure (numeric)
-    timeBodyGyroJerkStdDevX - measure (numeric)
-    timeBodyGyroJerkStdDevY - measure (numeric)
-    timeBodyGyroJerkStdDevZ - measure (numeric)
-    timeBodyAccMagStdDev - measure (numeric)
-    timeGravityAccMagStdDev - measure (numeric)
-    timeBodyAccJerkMagStdDev - measure (numeric)
-    timeBodyGyroMagStdDev - measure (numeric)
-    timeBodyGyroJerkMagStdDev - measure (numeric)
-    frequencyBodyAccStdDevX - measure (numeric)
-    frequencyBodyAccStdDevY - measure (numeric)
-    frequencyBodyAccStdDevZ - measure (numeric)
-    frequencyBodyAccJerkStdDevX - measure (numeric)
-    frequencyBodyAccJerkStdDevY - measure (numeric)
-    frequencyBodyAccJerkStdDevZ - measure (numeric)
-    frequencyBodyGyroStdDevX - measure (numeric)
-    frequencyBodyGyroStdDevY - measure (numeric)
-    frequencyBodyGyroStdDevZ - measure (numeric)
-    frequencyBodyAccMagStdDev - measure (numeric)
-    frequencyBodyBodyAccJerkMagStdDev - measure (numeric)
-    frequencyBodyBodyGyroMagStdDev - measure (numeric)
-    frequencyBodyBodyGyroJerkMagStdDev - measure (numeric)
+    [1] "Subject"                      "Activity"                     "tBodyAccmeanX"               
+ [4] "tBodyAccmeanY"                "tBodyAccmeanZ"                "tBodyAccstdX"                
+ [7] "tBodyAccstdY"                 "tBodyAccstdZ"                 "tGravityAccmeanX"            
+[10] "tGravityAccmeanY"             "tGravityAccmeanZ"             "tGravityAccstdX"             
+[13] "tGravityAccstdY"              "tGravityAccstdZ"              "tBodyAccJerkmeanX"           
+[16] "tBodyAccJerkmeanY"            "tBodyAccJerkmeanZ"            "tBodyAccJerkstdX"            
+[19] "tBodyAccJerkstdY"             "tBodyAccJerkstdZ"             "tBodyGyromeanX"              
+[22] "tBodyGyromeanY"               "tBodyGyromeanZ"               "tBodyGyrostdX"               
+[25] "tBodyGyrostdY"                "tBodyGyrostdZ"                "tBodyGyroJerkmeanX"          
+[28] "tBodyGyroJerkmeanY"           "tBodyGyroJerkmeanZ"           "tBodyGyroJerkstdX"           
+[31] "tBodyGyroJerkstdY"            "tBodyGyroJerkstdZ"            "tBodyAccMagmean"             
+[34] "tBodyAccMagstd"               "tGravityAccMagmean"           "tGravityAccMagstd"           
+[37] "tBodyAccJerkMagmean"          "tBodyAccJerkMagstd"           "tBodyGyroMagmean"            
+[40] "tBodyGyroMagstd"              "tBodyGyroJerkMagmean"         "tBodyGyroJerkMagstd"         
+[43] "fBodyAccmeanX"                "fBodyAccmeanY"                "fBodyAccmeanZ"               
+[46] "fBodyAccstdX"                 "fBodyAccstdY"                 "fBodyAccstdZ"                
+[49] "fBodyAccmeanFreqX"            "fBodyAccmeanFreqY"            "fBodyAccmeanFreqZ"           
+[52] "fBodyAccJerkmeanX"            "fBodyAccJerkmeanY"            "fBodyAccJerkmeanZ"           
+[55] "fBodyAccJerkstdX"             "fBodyAccJerkstdY"             "fBodyAccJerkstdZ"            
+[58] "fBodyAccJerkmeanFreqX"        "fBodyAccJerkmeanFreqY"        "fBodyAccJerkmeanFreqZ"       
+[61] "fBodyGyromeanX"               "fBodyGyromeanY"               "fBodyGyromeanZ"              
+[64] "fBodyGyrostdX"                "fBodyGyrostdY"                "fBodyGyrostdZ"               
+[67] "fBodyGyromeanFreqX"           "fBodyGyromeanFreqY"           "fBodyGyromeanFreqZ"          
+[70] "fBodyAccMagmean"              "fBodyAccMagstd"               "fBodyAccMagmeanFreq"         
+[73] "fBodyBodyAccJerkMagmean"      "fBodyBodyAccJerkMagstd"       "fBodyBodyAccJerkMagmeanFreq" 
+[76] "fBodyBodyGyroMagmean"         "fBodyBodyGyroMagstd"          "fBodyBodyGyroMagmeanFreq"    
+[79] "fBodyBodyGyroJerkMagmean"     "fBodyBodyGyroJerkMagstd"      "fBodyBodyGyroJerkMagmeanFreq"
+> 
 
 Tidy Data Set 2 :
 
-The second tidy data set is: TidyData.txt
+The second tidy data set is: tidy_data.txt
 
-This data set is 180 rows and 89 columns. The values in each column are the mean measures per subject and activity. The column names are identical to those described above (see Tidy Data Set 1). The data from Tidy Set 1 was transformed by grouping on subject ID and activity, and then the mean value for each measure was calculated.
+This data set is 180 rows and 81 columns. The values in each column are the mean measures per subject and activity. The 
+column names are identical to those described above (see Tidy Data Set 1). The data from Tidy Set 1 was transformed by 
+grouping on subject ID and activity, and then the mean value for each measure was calculated.
 Program PsuedoCode:
 
 1) Merge the training and test sets to create one data set.
@@ -131,18 +67,13 @@ Program PsuedoCode:
 3) Use descriptive activity names to name the activities
 
     Load Activity Labels:
-    Join dfActivityLabels with dfMeanStd
+    Join activityLabels with meanstdData
 
 4) Appropriately label the data set (columns) with descriptive activity names
 
     Create list of column names to be re-labelled
-    If first character is 't', replace with 'time'
-    If first character is 'f', replace with 'frequency'
-    Replace 'std' with 'StdDev'
-    Replace 'mean' with 'Mean'
-    Remove all periods
-    Assign the new column names back to dfMeanStd
-    Save this first tidy data set to file: MeanStd.txt
+    
+    Save this first tidy data set to file: meanstdData
 
 5) Create a second, independent tidy data set:
 
@@ -153,5 +84,6 @@ Program PsuedoCode:
     Check: length(lstGroups) = 20 subjects x 6 activities x 86 variables = 15480
     Join back subjectID, activityLabel, and variable columns
     Reshape for better appearance
-    Cols: subjectID, activityID, activityLabel,
-    Save this dataframe to file: TidyData.csv
+    Cols: Subject, Activity, activityLabel,
+    Save this dataframe to file: tidy_data.txt
+
